@@ -1,0 +1,29 @@
+// Create the XmlHolder object for the Response property of the employeesByNumber
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def eByNumberResponseHolder = groovyUtils.getXmlHolder("employeesByNumber#Response")
+eByNumberResponseHolder.namespaces['ns1'] = 'http://ws.wso2.org/dataservice/samples/rdbms_sample';
+
+/*get the current salary to calculate increment
+ * Other ways to convert float to integer
+ *	def sal = Float.valueOf(eByNumberResponseHolder["//ns1:salary"]).round()
+ *	def sal = Double.valueOf(eByNumberResponseHolder["//ns1:salary"]).intValue();
+*/
+def sal = Float.parseFloat(eByNumberResponseHolder["//ns1:salary"])
+Integer salInc = ((int) sal) * (2/100);
+
+//invoke increment Employee Salary with the updated increment in the request
+def incEmpSalRequestHolder = groovyUtils.getXmlHolder("incrementEmployeeSalary#Request")
+incEmpSalRequestHolder.namespaces['ns1'] = 'http://ws.wso2.org/dataservice/samples/rdbms_sample';
+incEmpSalRequestHolder["//ns1:increment"] = salInc
+
+def empNo = testRunner.testCase.testSteps['EmployeeData'].getPropertyValue("employeeNo");
+incEmpSalRequestHolder["//ns1:employeeNumber"] = empNo
+
+
+/*
+ * before final update check if salary increment is meeting the criteria
+ */
+ assert salInc <= 2900
+
+// Write the updated request if assertion is passes
+incEmpSalRequestHolder.updateProperty()
