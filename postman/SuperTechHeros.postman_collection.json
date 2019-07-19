@@ -1,0 +1,408 @@
+{
+  "info": {
+    "name": "super-tech-heroes",
+    "_postman_id": "ac4f49a4-63ae-4c66-849a-03601af4ff63",
+    "description": "A REST API for technology-themed superheroes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/"
+  },
+  "item": [
+    {
+      "id": "5e31f156-7729-4e14-961c-7521007dc45d",
+      "name": "Get API info",
+      "request": {
+        "url": "https://www.example.com/",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "disabled": false
+        },
+        "description": "This endpoint returns general API info, such as the version number, description, and relevant links.\n"
+      },
+      "response": [
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"name\": \"name54\",\r\n  \"version\": \"version54\",\r\n  \"description\": \"description54\",\r\n  \"links\": {\r\n    \"characters\": \"characters54\",\r\n    \"www\": \"www54\",\r\n    \"schema\": \"schema54\",\r\n    \"docs\": \"docs54\"\r\n  }\r\n}",
+          "status": "Returns API info",
+          "code": 200,
+          "name": "Response_200",
+          "id": "a0af218b-45ea-4359-9e7e-d27fd8699975"
+        }
+      ]
+    },
+    {
+      "id": "7bd976ac-31ba-4203-b9c0-b1a2294b3119",
+      "name": "Get API definition",
+      "request": {
+        "url": "https://www.example.com/schema?accept=accept22",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "Accept91",
+            "description": "You can request a specific OpenAPI version and format. The default is `application/openapi+json;version=3.0`, which returns a OpenAPI v3.0 definition, in JSON format.  You can request another format instead. For example, to request Swagger v2.0 in YAML format, you would set the `Accept` header to `application/openapi+yaml;version=2.0`.",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "disabled": false
+        },
+        "description": "This endpoint returns the API definition schema. By default, the response is in OpenAPI v3.0 JSON format, but you can specify your desired format via the `Accept` header or an `accept` query parameter.\n"
+      },
+      "response": [
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/openapi+json;version=3.0",
+              "disabled": false
+            }
+          ],
+          "body": "response32",
+          "status": "Returns the API schema in the requested format",
+          "code": 200,
+          "name": "Response_200",
+          "id": "a47347a0-9b1f-459d-a38f-ce318ae2e649"
+        }
+      ]
+    },
+    {
+      "id": "051295a5-9aca-47cb-ac84-cc7d47193668",
+      "name": "Find characters",
+      "request": {
+        "url": "https://www.example.com/characters?name=name32&type=hero",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "disabled": false
+        },
+        "description": "This endpoint returns all characters by default, or you can filter by `name` and `type` via query parameters.\n"
+      },
+      "response": [
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "[\r\n  {\r\n    \"name\": \"name24\",\r\n    \"type\": \"hero\",\r\n    \"powers\": [\r\n      \"powers24\"\r\n    ],\r\n    \"weakness\": \"weakness24\",\r\n    \"bio\": \"bio24\",\r\n    \"links\": {\r\n      \"self\": \"self24\",\r\n      \"sidekick\": \"sidekick24\",\r\n      \"nemesis\": \"nemesis24\"\r\n    }\r\n  }\r\n]",
+          "status": "Returns all characters that matched the filter criteria. If there are no matching characters, then the response is an empty array.\n",
+          "code": 200,
+          "name": "Response_200",
+          "id": "08a3afb0-53f6-4a18-b9aa-cd02051448f9"
+        },
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"error\": \"error24\",\r\n  \"message\": \"message24\"\r\n}",
+          "status": "Something is wrong with the request. For example, the `type` query parameter is not a valid character type.\n",
+          "code": 400,
+          "name": "Response_400",
+          "id": "ee6f360d-bb3b-43fc-81db-927fed5929ae"
+        }
+      ]
+    },
+    {
+      "id": "4094aea2-177c-473d-a366-401660576f7d",
+      "name": "Create a new character",
+      "request": {
+        "url": "https://www.example.com/characters",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"name24\",\r\n  \"type\": \"hero\",\r\n  \"powers\": [\r\n    \"powers24\"\r\n  ],\r\n  \"weakness\": \"weakness24\",\r\n  \"bio\": \"bio24\",\r\n  \"sidekick\": {},\r\n  \"nemesis\": {}\r\n}",
+          "disabled": false
+        },
+        "description": "This endpoint creates a new character. For heroes, you can also create the sidekick and/or nemesis at the same time by setting the `sidekick` and/or `nemesis` properties to objects rather than strings.\n"
+      },
+      "response": [
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"name\": \"name24\",\r\n  \"type\": \"hero\",\r\n  \"powers\": [\r\n    \"powers24\"\r\n  ],\r\n  \"weakness\": \"weakness24\",\r\n  \"bio\": \"bio24\",\r\n  \"links\": {\r\n    \"self\": \"self24\",\r\n    \"sidekick\": \"sidekick24\",\r\n    \"nemesis\": \"nemesis24\"\r\n  }\r\n}",
+          "status": "The character was created successfully",
+          "code": 201,
+          "name": "Response_201",
+          "id": "2ccbb24a-95ba-48ba-a384-efeef508315d"
+        },
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"error\": \"error24\",\r\n  \"message\": \"message24\"\r\n}",
+          "status": "Something is wrong with the request, such as invalid character data.",
+          "code": 400,
+          "name": "Response_400",
+          "id": "e7e90e53-0cc8-4995-8fbe-09cd6097d79c"
+        },
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"error\": \"error24\",\r\n  \"message\": \"message24\"\r\n}",
+          "status": "There is already an existing character with the same (or very similar) name.",
+          "code": 409,
+          "name": "Response_409",
+          "id": "9c737f29-d0da-45c0-919a-50ceb83d10d4"
+        }
+      ]
+    },
+    {
+      "id": "2d264df6-555c-4bfa-9583-4c5c9b045dd3",
+      "name": "Delete all characters",
+      "request": {
+        "url": "https://www.example.com/characters",
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "disabled": false
+        },
+        "description": "This endpoint deletes **all** characters.  It's mostly just used during testing, to reset state between each test.\n"
+      },
+      "response": [
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"count\": 63,\r\n  \"message\": \"message64\"\r\n}",
+          "status": "All charactes were deleted",
+          "code": 200,
+          "name": "Response_200",
+          "id": "f8eb4851-dbd9-4558-bd4b-736a8ecc497d"
+        }
+      ]
+    },
+    {
+      "id": "ab83c390-0c25-4486-9a7c-cdfd12d30883",
+      "name": "Get a specific character",
+      "request": {
+        "url": {
+          "protocol": "https",
+          "host": "www.example.com",
+          "path": [
+            "characters/:slug"
+          ],
+          "variable": [
+            {
+              "id": "slug",
+              "value": "d",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "disabled": false
+        },
+        "description": "This endpoint returns a specific character, given its slug. The slug is the character's name, lowercased, with all non-alphanumeric characters removed. For example, the slug for \"Wonder Woman\" would be \"wonderwoman\".\n"
+      },
+      "response": [
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"name\": \"name24\",\r\n  \"type\": \"hero\",\r\n  \"powers\": [\r\n    \"powers24\"\r\n  ],\r\n  \"weakness\": \"weakness24\",\r\n  \"bio\": \"bio24\",\r\n  \"links\": {\r\n    \"self\": \"self24\",\r\n    \"sidekick\": \"sidekick24\",\r\n    \"nemesis\": \"nemesis24\"\r\n  }\r\n}",
+          "status": "Returns the requested character",
+          "code": 200,
+          "name": "Response_200",
+          "id": "79c23cc0-488c-4db7-b199-cf4c5bf9a36b"
+        },
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"error\": \"error24\",\r\n  \"message\": \"message24\"\r\n}",
+          "status": "Something is wrong with the request, such as invalid character slug.",
+          "code": 400,
+          "name": "Response_400",
+          "id": "708ad075-59f7-4eee-9a93-9efc260429f8"
+        },
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"error\": \"error24\",\r\n  \"message\": \"message24\"\r\n}",
+          "status": "There is no character with the specified slug.",
+          "code": 404,
+          "name": "Response_404",
+          "id": "63ef7df1-5fae-471b-b98b-32b91c5cd1ad"
+        }
+      ]
+    },
+    {
+      "id": "bfac1e9d-391a-4df4-ae8c-9a81bd62734f",
+      "name": "Update a character",
+      "request": {
+        "url": {
+          "protocol": "https",
+          "host": "www.example.com",
+          "path": [
+            "characters/:slug"
+          ],
+          "variable": [
+            {
+              "id": "slug",
+              "value": "2kt",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"name24\",\r\n  \"type\": \"hero\",\r\n  \"powers\": [\r\n    \"powers24\"\r\n  ],\r\n  \"weakness\": \"weakness24\",\r\n  \"bio\": \"bio24\",\r\n  \"sidekick\": \"sidekick24\",\r\n  \"nemesis\": \"nemesis24\"\r\n}",
+          "disabled": false
+        },
+        "description": "This endpoint updates an existing character. Unlike the `POST /characters` endpoint, you _cannot_ update multiple characters at a time.\n"
+      },
+      "response": [
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"name\": \"name24\",\r\n  \"type\": \"hero\",\r\n  \"powers\": [\r\n    \"powers24\"\r\n  ],\r\n  \"weakness\": \"weakness24\",\r\n  \"bio\": \"bio24\",\r\n  \"links\": {\r\n    \"self\": \"self24\",\r\n    \"sidekick\": \"sidekick24\",\r\n    \"nemesis\": \"nemesis24\"\r\n  }\r\n}",
+          "status": "The character was successfully updated",
+          "code": 201,
+          "name": "Response_201",
+          "id": "3fe6d4e0-2788-47ab-b79a-1ffdda16fc95"
+        },
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"error\": \"error24\",\r\n  \"message\": \"message24\"\r\n}",
+          "status": "Something is wrong with the request, such as invalid character data.",
+          "code": 400,
+          "name": "Response_400",
+          "id": "484cc9e9-7185-447f-b770-2a333891b52e"
+        },
+        {
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false
+            }
+          ],
+          "body": "{\r\n  \"error\": \"error24\",\r\n  \"message\": \"message24\"\r\n}",
+          "status": "There is already an existing character with the same (or very similar) name.",
+          "code": 409,
+          "name": "Response_409",
+          "id": "0edd5813-6f53-4baf-9e2f-8d958550f7c2"
+        }
+      ]
+    }
+  ],
+  "variable": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": {
+      "key": "X-API-Key",
+      "value": "X-API-Key45",
+      "in": "header"
+    }
+  }
+}
