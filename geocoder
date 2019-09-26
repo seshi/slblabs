@@ -1,3 +1,6 @@
 https://api.opencagedata.com/geocode/v1/json?q=12.9716+77.5946&key=660d1a6be640405aac9f5992f126d6dc
 
 d5913036-b703-438a-bf62-3d9eb30ebd7d@41058
+
+
+http://dev.virtualearth.net/REST/v1/Locations/47.64054,-122.12934?o=json&key=AtGyBbljvspU467LYZwFtWnKcDrcyOsSYm_2Vrz-xH8pMvVhTngxb6yOXkT8zLe7
