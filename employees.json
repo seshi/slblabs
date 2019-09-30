@@ -151,65 +151,8 @@
     "EmployeesArray": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "uuid": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "created": {
-            "type": "integer"
-          },
-          "modified": {
-            "type": "integer"
-          },
-          "birthDate": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "department": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "gender": {
-            "type": "string"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "metadata": {
-            "type": "object",
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "size": {
-                "type": "integer"
-              }
-            }
-          },
-          "phone": {
-            "type": "string"
-          },
-          "postal": {
-            "type": "integer"
-          },
-          "state": {
-            "type": "string"
-          },
-          "street": {
-            "type": "string"
-          }
-        }
+        "type": "object",       
+        "$ref": "#/definitions/Employee"
       }
     },
     "Employee": {
